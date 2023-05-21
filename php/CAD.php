@@ -25,7 +25,7 @@ class CAD
     static public function verificaEmail($correo)
     {
         $con = new Conexion();
-        $query = $con->conectar()->prepare("SELECT * FROM usuario WHERE correo = '$correo'");
+        $query = $con->conectar()->prepare("SELECT * FROM usuario WHERE correo= '$correo'");
         if($query->execute())
         {
             /*Un solo registro */
@@ -56,20 +56,13 @@ class CAD
             if($row)
             {
                 #echo $row[0]." - ".$row[1]." - ".$row[2]." - ".$row[3];
-                $_SESSION['idUsuario'] = $row[0];
+                #$_SESSION['idUsuario'] = $row[0];
                 return 1;
             }
             else
             {
-                echo "El usuario no existe";
+                return 0;
             }
-
-            /*Más de un registro */
-            #while($row = $query->fetch(PDO::FETCH_ASSOC))
-            #{
-            #    $datos[] = $row;
-            #}
-            #print_r($datos);
         }
         else
         {
