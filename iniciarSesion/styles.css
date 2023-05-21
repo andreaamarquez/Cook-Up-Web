@@ -62,14 +62,14 @@ form label input::placeholder {
 
 
 form .link {
-    color: #252525;
+    color: #160d0d;
     margin-bottom: 15px;
 }
 
-form button {
+input[type="submit"] {
     color: #fff;
     border: none;
-    background:  rgb(246, 0, 127);
+    background:  rgb(246, 0, 127) !important;
     padding: 10px 15px;
     cursor: pointer;
     font-size: 20px;

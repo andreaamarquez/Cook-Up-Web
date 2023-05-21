@@ -13,7 +13,7 @@ class Conexion
     public function __construct()
     {
         $this->host = 'localhost';
-        $this->db = 'blogrecetas';
+        $this->db = 'blogrecetas'; //Aqui va tu nombre de bd
         $this->usuario = 'root';
         $this->pass='';
         $this->charset = 'utf8';
