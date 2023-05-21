@@ -652,6 +652,7 @@
         background: rgb(246, 0, 127);
         padding: 80px 20px 20px 20px;
         margin: auto;
+        margin-bottom: 60px;
         border-radius: 4px;
         font-family: 'calibri';
         color: white;
@@ -660,7 +661,7 @@
 
       footer{
         position: absolute;
-        bottom: 0;
+        
         width: 100%;
       }
 
@@ -745,6 +746,7 @@
         /*Posición*/
         position: fixed;
         display: flex;
+        top: 0;
         justify-content: flex-end; 
         align-items: center;
         flex-direction: row; 
@@ -958,6 +960,7 @@
          font-weight: bold;
          font-size: 25pt;
     }
+
     .introductionPage{
         /*Tamaño*/
         margin-left: 30px;
