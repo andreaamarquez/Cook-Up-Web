@@ -18,7 +18,7 @@ if(isset($_POST['nombre']) && isset($_POST['correo']) && isset($_POST['contrasen
         {
             if($cad->agregaUsuario($nombre, $contrasena, $correo))
             {
-                header("Location: ../index.html");
+                header("Location: ../indexInic.html");
             }
         }
         else
