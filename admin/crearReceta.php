@@ -92,7 +92,7 @@
         </nav>
         
         <div class="mainPageAdmin">
-            <div class = "titlePageAd"><a href="../index.html">Configuración <span>></span></a>Añadir receta <span> ></span></div>
+            <div class = "titlePageAd"><a href="menuConfig.html">Configuración <span>></span></a>Añadir receta <span> ></span></div>
             <?php
             if($flag == 1)
                 echo '<div class="mensaje" style="margin-bottom: 20px; border-radius: 20px; background-color: #7ee67c; color: #0b9c06; text-align: center;">Añadido con éxito</div>';

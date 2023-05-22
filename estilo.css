@@ -1,5 +1,4 @@
 
-
 .mainPageAdmin{
     height: 1500px;
     /*display: flex;
@@ -163,7 +162,7 @@ form{
         cursor: pointer;
         margin-right: 30px;
     }
-
+}
 @media screen and (min-width:1025px){
     *{
         font-family: 'Poppins', sans-serif;
