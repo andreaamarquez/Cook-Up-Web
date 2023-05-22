@@ -18,7 +18,8 @@ if(isset($_POST['correo']) && isset($_POST['contrasena']))
             #Rol
             #$_SESSION['Rol'] = 0;
             //Dar acceso al usuario
-            header("Location: ../index.html");
+
+            header("Location: ../indexInic.html");
         }
         else{
             #echo "Usuario no encontrado";
