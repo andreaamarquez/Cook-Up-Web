@@ -723,6 +723,63 @@
         margin: 16px 0;
         font-size: 16px;
       }
+
+      /*Parte de menu configuracion*/
+
+     
+      .menu2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        background-image: linear-gradient(to bottom, white 25%, white 30%, rgb(252, 192, 223) 70%);
+    }
+
+    .menu2 .row1 {
+        display: flex;
+        justify-content: center;
+        
+    }
+
+    .menu2 .row2 {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 5%;
+    }
+
+    .menu2 button {
+        width: 300px;
+        height: 300px;
+        margin: 5px;
+        border:solid 1px rgb(246, 0, 127);
+        box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        
+    }
+
+    .menu2 button img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 10px;
+    }
+
+    .menu2 button span {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .menu2 button p {
+        font-size: 16px;
+        margin-top: 5px;
+        color: #000;
+    }
 }
 
 @media screen and (min-width:681px) and (max-width:1024px){
