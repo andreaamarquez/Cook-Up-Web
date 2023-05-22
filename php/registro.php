@@ -19,7 +19,6 @@ if(isset($_POST['nombre']) && isset($_POST['correo']) && isset($_POST['contrasen
             if($cad->agregaUsuario($nombre, $contrasena, $correo))
             {
                 header("Location: ../indexInic.html");
-
             }
         }
         else
@@ -77,7 +76,7 @@ unset($_POST['contrasena']);
 
         <input type="submit" value="Registrate" style="color: #fff;
             border: none;
-            background:  rgb(246, 0, 127) !important;
+            background:  rgb(246, 0, 127);
             padding: 10px 15px;
             cursor: pointer;
             font-size: 20px;
