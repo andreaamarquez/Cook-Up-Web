@@ -16,9 +16,16 @@ if(isset($_POST['correo']) && isset($_POST['contrasena']))
         {
             #$_SESSION['correo'] = $correo;
             #Rol
-            #$_SESSION['Rol'] = 0;
-            //Dar acceso al usuario
-            header("Location: ../indexInic.html");
+            $usuario = $cad->traeUsuario($correo);
+            $rol = $usuario['idRol'];
+            $_SESSION['idRol'] = $rol;
+            if( $rol == 1)
+                header("Location: ../indexInic.html");
+
+            else if($rol == 2)
+                header("Location: ../indexAdmin.html");
+            else
+                echo "Error";
         }
         else{
             #echo "Usuario no encontrado";

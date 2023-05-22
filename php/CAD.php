@@ -10,7 +10,7 @@ class CAD
     {
 
         $con = new Conexion(); //Establecer conexion a la bd
-        $query = $con->conectar()->prepare("INSERT INTO usuario (nombre, correo, contrasena) VALUES ('$nombre', '$correo', '$contrasena')");
+        $query = $con->conectar()->prepare("INSERT INTO usuario (nombre, correo, contrasena, idRol) VALUES ('$nombre', '$correo', '$contrasena', '1')");
         if($query->execute())
         {
             return 1;
@@ -106,6 +106,19 @@ class CAD
             return false;
         }
     }
+
+    static public function traeUsuario($correo)
+    {
+        $con = new Conexion();
+        $query = $con->conectar()->prepare("SELECT idRol FROM usuario WHERE correo = '$correo'");
+        if ($query->execute()) {
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            return $row;
+        } else {
+            return 0;
+        }
+    }
+    
 
     static public function eliminaUsuario($idUsuario)
     {
