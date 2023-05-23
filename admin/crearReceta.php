@@ -63,23 +63,18 @@
 
                 <div class="sub-menu-wrap" id="subMenu">
                     <div class="sub-menu">
-                        <div class="user-info">
-                            <img src="../img/user.png">
-                            <h2>Pidu</h2>
-                        </div>
-                        <hr>
 
                         <a href="#" class="sub-menu-link">
                             <img src="../img/profile.png">
                             <p>Perfil</p>
                             <span>></span>
                         </a>
-                        <a href="editaUsuario.html" class="sub-menu-link">
+                        <a href="../editaUsuario.html" class="sub-menu-link">
                             <img src="../img/setting.png">
                             <p>Editar perfil</p>
                             <span>></span>
                         </a>
-                        <a href="#" class="sub-menu-link">
+                        <a href="index.html" class="sub-menu-link">
                             <img src="../img/logout.png">
                             <p>Cerrar sesión</p>
                             <span>></span>
