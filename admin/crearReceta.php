@@ -1,6 +1,5 @@
 <?php
     require_once "../php/conexion.php";
-    require_once "../php/CAD.php";
 
     $flag = 0;
 
