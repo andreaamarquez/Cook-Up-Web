@@ -180,9 +180,14 @@
                             <p>Perfil</p>
                             <span>></span>
                         </a>
-                        <a href="../editaUsuario.html" class="sub-menu-link">
+                        <a href="editaUsuario.html" class="sub-menu-link">
                             <img src="../img/setting.png">
                             <p>Editar perfil</p>
+                            <span>></span>
+                        </a>
+                        <a href="admin/menuConfig.html" class="sub-menu-link">
+                            <img src="../img/setting.png">
+                            <p>Configuración de Página</p>
                             <span>></span>
                         </a>
                         <a href="index.html" class="sub-menu-link">
