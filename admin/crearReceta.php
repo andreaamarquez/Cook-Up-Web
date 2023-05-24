@@ -177,17 +177,22 @@
                     <div class="sub-menu">
 
                         <a href="#" class="sub-menu-link">
-                            <img src="../img/profile.png">
+                            <img src="img/profile.png">
                             <p>Perfil</p>
                             <span>></span>
                         </a>
-                        <a href="../editaUsuario.html" class="sub-menu-link">
-                            <img src="../img/setting.png">
+                        <a href="editaUsuario.html" class="sub-menu-link">
+                            <img src="img/setting.png">
                             <p>Editar perfil</p>
                             <span>></span>
                         </a>
+                        <a href="admin/menuConfig.html" class="sub-menu-link">
+                            <img src="img/setting.png">
+                            <p>Configuración de Página</p>
+                            <span>></span>
+                        </a>
                         <a href="index.html" class="sub-menu-link">
-                            <img src="../img/logout.png">
+                            <img src="img/logout.png">
                             <p>Cerrar sesión</p>
                             <span>></span>
                         </a>
