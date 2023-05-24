@@ -1,4 +1,73 @@
+
+.mainPageAdmin{
+    height: 1500px;
+    /*display: flex;
+    justify-content: center;
+    align-items: center;*/
+    background-image: linear-gradient(to bottom, white 25%, white 30%, rgb(252, 192, 223) 70%);
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titlePageAd{
+    /*Tamaño*/
+    /*margin-top: 30px;*/
+    padding-top: 100px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    /*Posición*/
+    /*Apariencia*/
+    font-weight: bold;
+    font-size: 25pt;
+}
+
+form{
+    font-size:larger;
+    font-weight: bold;
+}
+
+.boton{
+    color: #fff;
+    border: none;
+    background:  rgb(246, 0, 127);
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 20px;
+}
+@media screen and (min-width:1025px){
+    *{
+        font-family: 'Poppins', sans-serif;
+    }
+    body{
+        margin: 0px; 
+        padding: 0px;
+        font-family: Arial, Helvetica, sans-serif;
+        /*background-image: url('img/fondoReg.jpg');*/
+    }
+    .cel{
+        display: none;
+        color: #fff;
+    }
+    .encabezado{
+        background-color: rgb(246, 0, 127);
+        /*Tamaño*/
+        height: 70px;
+        width: 100%;
+        /*Posición*/
+        position: fixed;
+        display: flex;
+        justify-content: flex-end; 
+        align-items: center;
+        flex-direction: row; 
+    }
+
+
 .sub-menu-wrap{
+
         position: fixed;
         top: 6%;
         right: 2%;
@@ -93,7 +162,7 @@
         cursor: pointer;
         margin-right: 30px;
     }
-
+}
 @media screen and (min-width:1025px){
     *{
         font-family: 'Poppins', sans-serif;
