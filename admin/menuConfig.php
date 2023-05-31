@@ -1,3 +1,21 @@
+<?php
+require_once "../php/CAD.php";
+session_start();
+$idRol = 0;
+$idUsuario = 0;
+
+if (isset($_SESSION['idRol'])) {
+    $idRol = $_SESSION['idRol'];
+    $idUsuario = $_SESSION['idUsuario'];
+}
+
+$cad = new CAD();
+$imagenU = "";
+$query = $cad->traeImagenUsuario($idUsuario);
+if ($query !== null && isset($query['imagenUsuario'])) {
+    $imagenU = $query['imagenUsuario'];
+} 
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -16,42 +34,68 @@
                 <div class = "logo">
                      <img src="../img/logo.png" style="height: 70px;" href="../index.html">
                 </div>
+                <?php
+                if($idRol == 1)
+                {
+                    echo '<div class="login">
+                        <img src="'.$imagenU.'" class="user-pic" onclick="toggleMenu()">
+                    </div>
 
-                <div class="login">
-                    <img src="../img/user.png" class="user-pic" onclick="toggleMenu()" alt="iamgenUser">
+                    <div class="sub-menu-wrap" id="subMenu">
+                        <div class="sub-menu">
+
+                            <a href="#" class="sub-menu-link">
+                                <img src="img/profile.png">
+                                <p>Perfil</p>
+                                <span>></span>
+                            </a>
+                            <a href="editarPerfil.php" class="sub-menu-link">
+                                <img src="img/setting.png">
+                                <p>Editar perfil</p>
+                                <span>></span>
+                            </a>
+                            <a href="php/cerrarsesion.php" class="sub-menu-link">
+                                <img src="img/logout.png">
+                                <p>Cerrar sesión</p>
+                                <span>></span>
+                            </a>
+
+                        </div>
+                    </div>';
+                }
+                else if($idRol == 2)
+                {
+                    echo ' <div class="login">
+                    <img src="'.$imagenU.'" class="user-pic" onclick="toggleMenu()">
                 </div>
-                
+
                 <div class="sub-menu-wrap" id="subMenu">
                     <div class="sub-menu">
 
-                        <a href="#" class="sub-menu-link">
+                        <a href=".php" class="sub-menu-link">
                             <img src="../img/profile.png">
                             <p>Perfil</p>
                             <span>></span>
                         </a>
-                        <a href="../editaUsuario.html" class="sub-menu-link">
+                        <a href="../iniciarSesion/editarPerfil.php" class="sub-menu-link">
                             <img src="../img/setting.png">
                             <p>Editar perfil</p>
                             <span>></span>
                         </a>
-                        <a href="#" class="sub-menu-link">
-                            <img src="../img/setting.png">
-                            <p>Configuración de Página</p>
-                            <span>></span>
-                        </a>
-                        <a href="../index.html" class="sub-menu-link">
+                        <a href="../php/cerrarsesion.php" class="sub-menu-link">
                             <img src="../img/logout.png">
                             <p>Cerrar sesión</p>
                             <span>></span>
                         </a>
 
                     </div>
-                </div>
-
+                </div>';
+                }
+                ?>
              </div>
         </nav>
         
-        <div class = "titlePageAd"><a href="../indexAdmin.html">Inicio <span>></span></a>Configuración <span> ></span></div>
+        <div class = "titlePageAd"><a href="../index.php">Inicio <span>></span></a>Configuración <span> ></span></div>
 
         <!-- Aqui va el código -->
 

@@ -16,23 +16,19 @@
         $imagenU = $query['imagenUsuario'];
     } 
     
-    $idReceta = $_GET['idReceta'];
-    $cad = new CAD();
-    $datos = $cad->traeReceta($idReceta);
+    $datos = $cad->traeUsuarioEs($idUsuario);
     
     if ($datos) {
-        $nombre = $datos['nombreReceta'];
-        $introduccion = $datos['introduccion'];
-        $imagen = $datos['imagen'];
-        $porciones = $datos['porciones'];
-        $ingredientes = $datos['ingredientes'];
-        $procedimiento = $datos['procedimiento'];
+        $nombre = $datos['nombre'];
+        $correo = $datos['correo'];
+        $imagen = $datos['imagenUsuario'];
+        $contrasena = $datos['contrasena'];
     
         // Verificar si se ha enviado el formulario de edición
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obtener los datos enviados por el formulario
             $nombre = $_POST['nombre'];
-            $introduccion = $_POST['introduccion'];
+            $correo = $_POST['correo'];
             if(isset($_FILES['nueva_imagen']['name']) && $_FILES['nueva_imagen']['name']!='')
             {
                 $imagen = $_FILES['nueva_imagen']['name']; 
@@ -42,20 +38,17 @@
                 move_uploaded_file($archivo, $ruta);
                 $imagen = $ruta;
             }
-            
-            $porciones = $_POST['porciones'];
-            $ingredientes = $_POST['ingredientes'];
-            $procedimiento = $_POST['procedimiento'];
-    
+            $idRol = $_POST['idRol'];
             // Realizar la actualización de la receta en la base de datos
-            $actualizado = $cad->modificaReceta($nombre, $introduccion, $porciones, $imagen, $ingredientes, $procedimiento,$idReceta);
+            $consulta = "nombre = '$nombre', correo = '$correo', imagenUsuario= '$imagen',contrasena ='$contrasena'";
+            $actualizado = $cad->modificaUsuario($consulta,$idUsuario);
 
             if ($actualizado) {
                 // Redirigir a la página de visualización de la receta actualizada
-                header("Location: edicion.php?idReceta=$idReceta");
+                header("Location: editarPerfil.php");
                 exit();
             } else {
-                echo "Error al actualizar la receta.";
+                echo "Error al actualizar";
             }
         }
     
@@ -68,7 +61,7 @@
                         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
                         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
                         <link rel="icon" type="../img/image/png" href="../img/icono.png">
-                        <title>'.$nombre.'</title>
+                        <title>Editar perfil</title>
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     </head>
                 <body>
@@ -76,72 +69,83 @@
                         <div class = "logo">
                         <img src="../img/logo.png" style="height: 70px;">
                         </div>';
-                        if($idRol == 2)
-                    {
-                        echo ' <div class="login">
-                        <img src="'.$imagenU.'" class="user-pic" onclick="toggleMenu()">
-                    </div>
+                        if($idRol == 1)
+                        {
+                            echo '<div class="login">
+                                <img src="'.$imagenU.'" class="user-pic" onclick="toggleMenu()">
+                            </div>
 
-                    <div class="sub-menu-wrap" id="subMenu">
-                        <div class="sub-menu">
+                            <div class="sub-menu-wrap" id="subMenu">
+                                <div class="sub-menu">
 
-                            <a href=".php" class="sub-menu-link">
-                                <img src="../img/profile.png">
-                                <p>Perfil</p>
-                                <span>></span>
-                            </a>
-                            <a href="../iniciarSesion/editarPerfil.php" class="sub-menu-link">
-                                <img src="../img/setting.png">
-                                <p>Editar perfil</p>
-                                <span>></span>
-                            </a>
-                            <a href="menuConfig.php" class="sub-menu-link">
+                                    <a href="#" class="sub-menu-link">
+                                        <img src="img/profile.png">
+                                        <p>Perfil</p>
+                                        <span>></span>
+                                    </a>
+                                    <a href="editarPerfil.php" class="sub-menu-link">
+                                        <img src="img/setting.png">
+                                        <p>Editar perfil</p>
+                                        <span>></span>
+                                    </a>
+                                    <a href="php/cerrarsesion.php" class="sub-menu-link">
+                                        <img src="img/logout.png">
+                                        <p>Cerrar sesión</p>
+                                        <span>></span>
+                                    </a>
+
+                                </div>
+                            </div>';
+                        }
+                        else if($idRol == 2)
+                        {
+                            echo ' <div class="login">
+                            <img src="'.$imagenU.'" class="user-pic" onclick="toggleMenu()">
+                        </div>
+
+                        <div class="sub-menu-wrap" id="subMenu">
+                            <div class="sub-menu">
+
+                                <a href=".php" class="sub-menu-link">
+                                    <img src="../img/profile.png">
+                                    <p>Perfil</p>
+                                    <span>></span>
+                                </a>
+                                <a href="../admin/menuConfig.php" class="sub-menu-link">
                                     <img src="../img/setting.png">
                                     <p>Configuración de Página</p>
                                     <span>></span>
                                 </a>
-                            <a href="../php/cerrarsesion.php" class="sub-menu-link">
-                                <img src="../img/logout.png">
-                                <p>Cerrar sesión</p>
-                                <span>></span>
-                            </a>
+                                <a href="../php/cerrarsesion.php" class="sub-menu-link">
+                                    <img src="../img/logout.png">
+                                    <p>Cerrar sesión</p>
+                                    <span>></span>
+                                </a>
 
-                        </div>
-                    </div>';
-                    }
-                    echo '</div>
+                            </div>
+                        </div>';
+                        }
+                   echo '</div>
                     <div class="mainPageAdmin">
-                        <div class = "titleRecipe"><a href="editarReceta.php">Editar receta<span>></span></a>'.$nombre.'</div>
+                        <div class = "titleRecipe"><a href="../index.php">Editar perfil<span>></span></a>'.$nombre.'</div>
                         <div class="form">
                         
-                        <form method="POST" action="" enctype="multipart/form-data">
+                        <form method="POST" action="editarPerfil.php" enctype="multipart/form-data">
                         <br><br>
-                            <label for="nombre">Nombre de la receta:</label><br>
+                            <label for="nombre">Mi nombre:</label><br>
                             <input type="text" name="nombre" value="'.$nombre.'"><br><br>
         
-                            <label for="introduccion">Introducción:</label><br>
-                            <textarea name="introduccion" rows="5" cols="50">'.$introduccion.'</textarea><br><br>
+                            <label for="correo">Correo:</label><br>
+                            <textarea name="correo" rows="5" cols="30">'.$correo.'</textarea><br><br>
 
-                            <label for="ingredientes">Ingredientes:</label><br>
-                            <textarea name="ingredientes" rows="10" cols="50">'.$ingredientes.'</textarea><br><br>
-
-                            <label for="procedimiento">Procedimiento:</label><br>
-                            <textarea name="procedimiento" rows="15" cols="50">'.$procedimiento.'</textarea><br><br>
+                            <label for="contrasena">Contraseña:</label><br>
+                            <textarea name="contrasena" rows="1" cols="30">'.$contrasena.'</textarea><br><br>
 
                             <label for="imagen">Imagen:</label><br><br>
                             <img src="'.$imagen.'" style="width: 200px;"><br><br>
                             <input type="file" name="nueva_imagen"><br><br>
 
-                            <label for="porciones">Porciones:</label>
-                            <select name="porciones">';
-                                for ($i = 1; $i <= 10; $i++) {
-                                    if ($i == $porciones) {
-                                        echo "<option value=\"$i\" selected>$i</option>";
-                                    } else {
-                                        echo "<option value=\"$i\">$i</option>";
-                                    }
-                                }
-                            echo '</select><br><br>
+                            
                             <input type="submit" value="Guardar cambios" class="boton">
                         </form>
                         </div>
@@ -169,8 +173,6 @@
         </script>
                 </body>
             </html>';
-    } else {
-        echo "No se encontró la receta especificada.";
-    }
+    } 
            
 ?>

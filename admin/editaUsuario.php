@@ -1,6 +1,20 @@
 <?php
     require_once "../php/CAD.php";
-    
+    session_start();
+    $idRol = 0;
+    $idUsuario = 0;
+
+    if (isset($_SESSION['idRol'])) {
+        $idRol = $_SESSION['idRol'];
+        $idUsuario = $_SESSION['idUsuario'];
+    }
+
+    $cad = new CAD();
+    $imagenU = "";
+    $query = $cad->traeImagenUsuario($idUsuario);
+    if ($query !== null && isset($query['imagenUsuario'])) {
+        $imagenU = $query['imagenUsuario'];
+    } 
     $id = $_GET['idUsuario'];
     $cad = new CAD();
     $datos = $cad->traeUsuarioEs($id);
@@ -55,12 +69,43 @@
                     <div class = "encabezado">
                         <div class = "logo">
                         <img src="../img/logo.png" style="height: 70px;">
-                        </div>
-                        <div class = "login">
-                            <div class = "inicioSesion"><a href="../iniciarSesion/iniciarSesion.html">Iniciar sesión</a></div>
-                            <div class = "registro"><a href="../registrarse/registrarse.html">Registrarse</a></div>
-                        </div>
+                        </div>';
+                    
+                    if($idRol == 2)
+                    {
+                        echo ' <div class="login">
+                        <img src="'.$imagenU.'" class="user-pic" onclick="toggleMenu()">
                     </div>
+
+                    <div class="sub-menu-wrap" id="subMenu">
+                        <div class="sub-menu">
+
+                            <a href=".php" class="sub-menu-link">
+                                <img src="../img/profile.png">
+                                <p>Perfil</p>
+                                <span>></span>
+                            </a>
+                            <a href="../iniciarSesion/editarPerfil.php" class="sub-menu-link">
+                                <img src="../img/setting.png">
+                                <p>Editar perfil</p>
+                                <span>></span>
+                            </a>
+                            <a href="menuConfig.php" class="sub-menu-link">
+                                    <img src="../img/setting.png">
+                                    <p>Configuración de Página</p>
+                                    <span>></span>
+                                </a>
+                            <a href="../php/cerrarsesion.php" class="sub-menu-link">
+                                <img src="../img/logout.png">
+                                <p>Cerrar sesión</p>
+                                <span>></span>
+                            </a>
+
+                        </div>
+                    </div>';
+                    }
+
+                    echo '</div>
                     <div class="mainPageAdmin">
                         <div class = "titleRecipe"><a href="usuarios.php">Editar usuario<span>></span></a>'.$nombre.'</div>
                         <div class="form">
@@ -106,6 +151,13 @@
                 <a href="#">Términos de uso</a>
             </div>
         </div>
+        <script>
+            let subMenu = document.getElementById("subMenu");
+
+            function toggleMenu(){
+                subMenu.classList.toggle("open-menu");
+            }
+        </script>
                 </body>
             </html>';
     } 

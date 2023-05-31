@@ -1,13 +1,12 @@
 <?php
 
 require_once "CAD.php";
+session_start();
 
 $flag = 0;
 
 if(isset($_POST['nombre']) && isset($_POST['correo']) && isset($_POST['contrasena']))
 {
-    #echo $_POST['nombre']."-".$_POST['correo']."-".$_POST['contrasena'];
-    #Enviar a la BD
     if($_POST['nombre'] != '' && $_POST['correo'] !='' && $_POST['contrasena'] != '')
     {
         $nombre = $_POST['nombre'];
@@ -18,7 +17,13 @@ if(isset($_POST['nombre']) && isset($_POST['correo']) && isset($_POST['contrasen
         {
             if($cad->agregaUsuario($nombre, $contrasena, $correo))
             {
-                header("Location: ../indexInic.html");
+                $usuario = $cad->traeUsuario($correo);
+                $idUsuario = $cad->traeUsuarioId($correo);
+                $rol = $usuario['idRol'];
+                $id = $idUsuario['idUsuario'];
+                $_SESSION['idRol'] = $rol;
+                $_SESSION['idUsuario'] = $id;
+                header("Location: ../index.php");
             }
         }
         else
@@ -81,7 +86,7 @@ unset($_POST['contrasena']);
             cursor: pointer;
             font-size: 20px;
             border-radius: 20px;">
-        <div class="backToHome"><a href="../index.html">Volver al inicio</a></div>
+        <div class="backToHome"><a href="../index.php">Volver al inicio</a></div>
     </form>
     
     <script src="main.js"></script>

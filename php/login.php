@@ -17,15 +17,12 @@ if(isset($_POST['correo']) && isset($_POST['contrasena']))
             #$_SESSION['correo'] = $correo;
             #Rol
             $usuario = $cad->traeUsuario($correo);
+            $idUsuario = $cad->traeUsuarioId($correo);
             $rol = $usuario['idRol'];
+            $id = $idUsuario['idUsuario'];
             $_SESSION['idRol'] = $rol;
-            if( $rol == 1)
-                header("Location: ../indexInic.html");
-
-            else if($rol == 2)
-                header("Location: ../indexAdmin.html");
-            else
-                echo "Error";
+            $_SESSION['idUsuario'] = $id;
+            header("Location: ../index.php");
         }
         else{
             #echo "Usuario no encontrado";
@@ -84,7 +81,7 @@ unset($_POST['contrasena']);
             cursor: pointer;
             font-size: 20px;
             border-radius: 20px;">
-        <div class="backToHome"><a href="../index.html">Volver al inicio</a></div>
+        <div class="backToHome"><a href="../index.php">Volver al inicio</a></div>
     </form>
 </body>
 </html>

@@ -10,7 +10,7 @@ class CAD
     {
 
         $con = new Conexion(); //Establecer conexion a la bd
-        $query = $con->conectar()->prepare("INSERT INTO usuario (nombre, correo, contrasena, idRol) VALUES ('$nombre', '$correo', '$contrasena', '1')");
+        $query = $con->conectar()->prepare("INSERT INTO usuario (nombre, correo, contrasena, idRol, imagenUsuario) VALUES ('$nombre', '$correo', '$contrasena', '1', '../img/user.jpg')");
         if($query->execute())
         {
             return 1;
@@ -118,6 +118,34 @@ class CAD
             return 0;
         }
     }
+
+    static public function traeUsuarioId($correo)
+    {
+        $con = new Conexion();
+        $query = $con->conectar()->prepare("SELECT idUsuario FROM usuario WHERE correo = '$correo'");
+        if ($query->execute()) {
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            return $row;
+        } else {
+            return 0;
+        }
+    }
+
+    static public function traeImagenUsuario($id)
+    {
+        $con = new Conexion();
+        $query = $con->conectar()->prepare("SELECT imagenUsuario FROM usuario WHERE idUsuario = '$id'");
+        if ($query->execute()) {
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            return $row;
+        } else {
+            return 0;
+        }
+    }
+
+
+
+
 
     /*static public function traeUsuarioEs($id)
     {

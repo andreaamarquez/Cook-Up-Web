@@ -1,5 +1,21 @@
 <?php
     require_once "../php/conexion.php";
+    require_once "../php/CAD.php";
+    session_start();
+    $idRol = 0;
+    $idUsuario = 0;
+
+    if (isset($_SESSION['idRol'])) {
+        $idRol = $_SESSION['idRol'];
+        $idUsuario = $_SESSION['idUsuario'];
+    }
+
+    $cad = new CAD();
+    $imagenU = "";
+    $query = $cad->traeImagenUsuario($idUsuario);
+    if ($query !== null && isset($query['imagenUsuario'])) {
+        $imagenU = $query['imagenUsuario'];
+    } 
 
     $flag = 0;
 
@@ -167,43 +183,47 @@
                 <div class = "logo">
                      <img src="../img/logo.png" style="height: 70px;">
                 </div>
-
-                <di class="login">
-                    <img src="../img/user.png" class="user-pic" onclick="toggleMenu()">
+                <?php
+                if($idRol == 2)
+                {
+                    echo ' <div class="login">
+                    <img src="'.$imagenU.'" class="user-pic" onclick="toggleMenu()">
                 </div>
 
                 <div class="sub-menu-wrap" id="subMenu">
                     <div class="sub-menu">
 
-                        <a href="#" class="sub-menu-link">
+                        <a href=".php" class="sub-menu-link">
                             <img src="../img/profile.png">
                             <p>Perfil</p>
                             <span>></span>
                         </a>
-                        <a href="editaUsuario.html" class="sub-menu-link">
+                        <a href="../iniciarSesion/editarPerfil.php" class="sub-menu-link">
                             <img src="../img/setting.png">
-                            <p>Editar perfil</p>
+                            <p>Editar perdil</p>
                             <span>></span>
                         </a>
-                        <a href="admin/menuConfig.html" class="sub-menu-link">
-                            <img src="../img/setting.png">
-                            <p>Configuración de Página</p>
-                            <span>></span>
-                        </a>
-                        <a href="index.html" class="sub-menu-link">
+                        <a href="menuConfig.php" class="sub-menu-link">
+                                <img src="../img/setting.png">
+                                <p>Configuración de Página</p>
+                                <span>></span>
+                            </a>
+                        <a href="../php/cerrarsesion.php" class="sub-menu-link">
                             <img src="../img/logout.png">
                             <p>Cerrar sesión</p>
                             <span>></span>
                         </a>
 
                     </div>
-                </div>
+                </div>';
+                }
+                ?>
 
              </div>
         </nav>
         
         <div class="mainPageAdmin">
-            <div class = "titlePageAd"><a href="menuConfig.html">Configuración <span>></span></a>Añadir receta <span> ></span></div>
+            <div class = "titlePageAd"><a href="menuConfig.php">Configuración <span>></span></a>Añadir receta <span> ></span></div>
             <?php
             if($flag == 1)
                 echo '<div class="mensaje" style="margin-bottom: 20px; border-radius: 20px; background-color: #7ee67c; color: #0b9c06; text-align: center;">Añadido con éxito</div>';
