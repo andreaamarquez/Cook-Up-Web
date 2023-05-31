@@ -1,6 +1,5 @@
 
 .mainPageAdmin{
-    height: 1500px;
     /*display: flex;
     justify-content: center;
     align-items: center;*/
@@ -10,6 +9,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.form1{
+    margin-left: 35px !important;
 }
 
 .titlePageAd{
