@@ -73,23 +73,23 @@ class CAD
     
     static public function modificaUsuario($consulta, $idUsuario)
     {
+        $con = new Conexion(); // Establecer conexión a la base de datos
+        $query = $con->conectar()->prepare("UPDATE usuario SET $consulta WHERE idUsuario = :id");
+        $query->bindParam(':id', $idUsuario);
 
-        $con = new Conexion(); //Establecer conexion a la bd
-        $query = $con->conectar()->prepare("UPDATE usuarios SET $consulta WHERE idUsuario = $idUsuario");
-        if($query->execute())
-        {
+        if ($query->execute()) {
             return 1;
-        }
-        else{
-            print_r($con->conectar()->errorInfo());
+        } else {
+            print_r($query->errorInfo());
             return 0;
         }
     }
 
+
     static public function traeUsuarios()
     {
         $con = new Conexion();
-        $query = $con->conectar()->prepare("SELECT * FROM usuarios ORDER BY idUsuario DESC");
+        $query = $con->conectar()->prepare("SELECT * FROM usuario ORDER BY nombre ASC");
         if($query->execute())
         {
             $datos = [];
@@ -118,13 +118,50 @@ class CAD
             return 0;
         }
     }
+
+    /*static public function traeUsuarioEs($id)
+    {
+        $con = new Conexion();
+        $query = $con->conectar()->prepare("SELECT * FROM usuario WHERE idUsuario = '$id'");
+        if($query->execute())
+        {
+            $datos = [];
+            /*Más de un registro 
+            while($row = $query->fetch(PDO::FETCH_ASSOC))
+            {
+                $datos[] = $row;
+            }
+            #print_r($datos);
+            return $datos;
+        }
+        else
+        {
+            return false;
+        }
+    }*/
+
+    static public function traeUsuarioEs($id)
+    {
+        $con = new Conexion();
+        $query = $con->conectar()->prepare("SELECT * FROM usuario WHERE idUsuario = '$id'");
+        if($query->execute())
+        {
+            $datos = $query->fetch(PDO::FETCH_ASSOC);
+            return $datos;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     
 
     static public function eliminaUsuario($idUsuario)
     {
 
         $con = new Conexion(); //Establecer conexion a la bd
-        $query = $con->conectar()->prepare("DELETE from usuarios WHERE idUsuario = $idUsuario");
+        $query = $con->conectar()->prepare("DELETE from usuario WHERE idUsuario = $idUsuario");
         if($query->execute())
         {
             return 1;
