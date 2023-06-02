@@ -1,10 +1,9 @@
 <?php
-    require_once "../php/CAD.php";
+    require_once "php/CAD.php";
 
     session_start();
     $idRol = 0;
     $idUsuario = 0;
-
     if (isset($_SESSION['idRol'])) {
         $idRol = $_SESSION['idRol'];
         $idUsuario = $_SESSION['idUsuario'];
@@ -15,32 +14,37 @@
     $query = $cad->traeImagenUsuario($idUsuario);
     if ($query !== null && isset($query['imagenUsuario'])) {
         $imagenU = $query['imagenUsuario'];
+        $imagenU = substr($imagenU, 3);
     } 
 
-    if (isset($_GET['idReceta'])) {
-        $idReceta = $_GET['idReceta'];
-        $cad = new CAD();
-        $flag = $cad->eliminaReceta($idReceta);
-    }
+    //$idReceta = $_GET['idReceta'];
     
+    
+    if (isset($_POST['busqueda'])) {
+    
+        // Verificar si se ha enviado el formulario de edición
+        $busqueda = $_POST['busqueda'];
+    }
+
+
 ?>
 
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="../estilo.css" rel="stylesheet" type="text/css">
+        <link href="estilo.css" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-        <title>Eliminar receta</title>
+        <title>Búsqueda</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-        <link rel="icon" type="image/png" href="../img/icono.png">
+        <link rel="icon" type="image/png" href="img/icono.png">
     </head>
     <body>
         <div class = "encabezado">
            <div class = "logo">
-                <img src="../img/logo.png" style="height: 70px;">
+                <img src="img/logo.png" style="height: 70px;">
            </div>
             <?php
                     if($idRol == 2)
@@ -53,22 +57,22 @@
                         <div class="sub-menu">
 
                             <a href=".php" class="sub-menu-link">
-                                <img src="../img/profile.png">
+                                <img src="img/profile.png">
                                 <p>Perfil</p>
                                 <span>></span>
                             </a>
-                            <a href="../iniciarSesion/editarPerfil.php" class="sub-menu-link">
-                                <img src="../img/setting.png">
+                            <a href="iniciarSesion/editarPerfil.php" class="sub-menu-link">
+                                <img src="img/setting.png">
                                 <p>Editar perfil</p>
                                 <span>></span>
                             </a>
                             <a href="menuConfig.php" class="sub-menu-link">
-                                    <img src="../img/setting.png">
+                                    <img src="img/setting.png">
                                     <p>Configuración de Página</p>
                                     <span>></span>
                                 </a>
-                            <a href="../php/cerrarsesion.php" class="sub-menu-link">
-                                <img src="../img/logout.png">
+                            <a href="php/cerrarsesion.php" class="sub-menu-link">
+                                <img src="img/logout.png">
                                 <p>Cerrar sesión</p>
                                 <span>></span>
                             </a>
@@ -81,12 +85,12 @@
         </div>
         <div class="mainPageAdmin">
         
-        <div class = "titlePageAd"><a href="menuConfig.php">Configuración<span>></span></a>Eliminar receta <span> ></span></div>
+        <div class = "titlePageAd"><a href="index.php">Inicio<span>></span></a>Búsqueda<span> ></span></div>
         <section class="todo">
         <?php
             $cad = new CAD();
 
-            $datos = $cad->traeRecetas();
+            $datos = $cad->traeRecetasBus($busqueda);
             if($datos)
             {
                 foreach($datos as $registro)
@@ -96,6 +100,7 @@
                     $nombreReceta = $registro['nombreReceta'];
                     $imagen = $registro['imagen'];
                     $introduccion = $registro['introduccion'];
+                    $imagen = substr($imagen, 3);
                     
                     //echo "<td><a href='elimina.php?idUsuario=$idUsuario'>Eliminar</a></td>";
                     echo '
@@ -105,7 +110,7 @@
                                 <p class="titulo-buscar">'.$nombreReceta.'</p>
                                 <p>'.$introduccion.'</p>
                             </div>
-                            <img src="../img/borrar.png" alt="Icono Editar" style="height: 30px; margin-right: 30px" onclick="window.location.href = \'eliminar.php?idReceta='.$idReceta.'\'">
+                            <img src="img/ver.png" alt="Icono ver" style="height: 30px; margin-right: 30px" onclick="window.location.href = \'receta.php?idReceta='.$idReceta.'\'">
                         </div>';
                 }
             }

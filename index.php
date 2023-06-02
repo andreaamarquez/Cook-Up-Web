@@ -45,9 +45,9 @@
                 <div class="sub-menu-wrap" id="subMenu">
                     <div class="sub-menu">
 
-                        <a href="#" class="sub-menu-link">
-                            <img src="img/profile.png">
-                            <p>Perfil</p>
+                        <a href="guardados.php" class="sub-menu-link">
+                            <img src="img/corazon.png">
+                            <p>Elementos guardados</p>
                             <span>></span>
                         </a>
                         <a href="iniciarSesion/editarPerfil.php" class="sub-menu-link">
@@ -73,9 +73,9 @@
             <div class="sub-menu-wrap" id="subMenu">
                 <div class="sub-menu">
 
-                    <a href=".php" class="sub-menu-link">
-                        <img src="img/profile.png">
-                        <p>Perfil</p>
+                    <a href="guardados.php" class="sub-menu-link">
+                        <img src="img/corazon.png">
+                        <p>Elementos guardados</p>
                         <span>></span>
                     </a>
                     <a href="iniciarSesion/editarPerfil.php" class="sub-menu-link">
@@ -112,20 +112,25 @@
         <div class="encImg">
             <img src="img/banner.png" style="width: 100%;">
         </div>
-        <div class="containerSearch">
-            <input type="text" placeholder="Buscar">
+        
+        <div class="menu">
+            <a href = "index.html">Inicio  <span>></span></a>
+            <a href = "categoria.php?idCategoria=1">Desayunos  <span>></span></a>
+            <a href = "categoria.php?idCategoria=2">Platillos  <span>></span></a>
+            <a href = "categoria.php?idCategoria=3">Postres  <span>></span></a>
+            <a href = "categoria.php?idCategoria=4">Bebidas  <span>></span></a>
+            <a href = "categoria.php?idCategoria=5">Tips  <span>></span></a>
+        </div>
+        <form action="busqueda.php" method="POST">
+        <!--div class="containerSearch">
+            <input type="text" placeholder="Buscar" name = "busqueda">
             <div class="btnSearch">
                 <i class="fa fa-search"></i>
             </div>
-        </div>
-        <div class="menu">
-            <a href = "index.html">Inicio  <span>></span></a>
-            <a href = "menu/desayunos.html">Desayunos  <span>></span></a>
-            <a href = "menu/platillos.html">Platillos  <span>></span></a>
-            <a href = "menu/postres.html">Postres  <span>></span></a>
-            <a href = "menu/bebidas.html">Bebidas  <span>></span></a>
-            <a href = "menu/tips.html">Tips  <span>></span></a>
-        </div>
+        </div-->
+            <input type="text" placeholder="Buscar" name = "busqueda">
+            <input type="submit" value="buscar">
+        </form>
         <div class="cel">Ver también...</div>
         <div class="mainPage">
             <div class="sugerencias">Platillos con <span>></span></div>

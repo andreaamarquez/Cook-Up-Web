@@ -1,74 +1,20 @@
-<?php
-    require_once "../php/conexion.php";
-    require_once "../php/CAD.php";
-    session_start();
-    $idRol = 0;
-    $idUsuario = 0;
 
-    if (isset($_SESSION['idRol'])) {
-        $idRol = $_SESSION['idRol'];
-        $idUsuario = $_SESSION['idUsuario'];
-    }
-
-    $cad = new CAD();
-    $imagenU = "";
-    $query = $cad->traeImagenUsuario($idUsuario);
-    if ($query !== null && isset($query['imagenUsuario'])) {
-        $imagenU = $query['imagenUsuario'];
-    } 
-
-    $flag = 0;
-
-    if(isset($_POST['nombre']) && isset($_POST['porciones']) && isset($_POST['ingredientes']) && isset($_POST['procedimiento']))
-    {
-        $nombre = $_POST['nombre'];
-        $categoria = $_POST['categoria'];
-        $introduccion = $_POST['introduccion'];
-        $porciones = isset($_POST['porciones']) ? $_POST['porciones'] : '';
-        $imagen = isset($_FILES['imagen']['name']) ? $_FILES['imagen']['name'] : '';
-        $archivo = isset($_FILES['imagen']['tmp_name']) ? $_FILES['imagen']['tmp_name'] : '';
-        $ruta = "../img";
-        $ruta = $ruta."/".$imagen;
-        move_uploaded_file($archivo, $ruta);
-        $ingredientes = $_POST['ingredientes'];
-        $procedimiento = $_POST['procedimiento'];
-
-        $con = new Conexion();
-        $query = $con->conectar()->prepare("INSERT INTO recetas (idCategoria, nombreReceta, introduccion, porciones, imagen, ingredientes,procedimiento) VALUES ('$categoria','$nombre','$introduccion','$porciones','$ruta','$ingredientes','$procedimiento')");
-        if($query->execute())
-        {
-            /*$crearArchReceta = new CAD();
-            $query2 = $crearArchReceta->creaReceta($nombre, $categoria, $introduccion, $porciones, $ruta, $ingredientes, $procedimiento);
-            $query2->execute();
-                $flag = 1;*/
-            #$con = new Conexion();
-            
-            $query2 = $con->conectar()->prepare("SELECT nombreCategoria from categoria WHERE idCategoria = '$categoria'");
-            if($query2->execute()) 
-            {
-                #$flag = 0;
-                $cat = $query2->fetch(PDO::FETCH_ASSOC);
-                $rutaArch = "../categorias/".$cat['nombreCategoria'];
-                $archivo = fopen($rutaArch."/".$nombre.".php", "w");
-                if($archivo)
-                {
-                    $texto = '
                                 <?php
                                 require_once "../../php/CAD.php";
                             
                                 session_start();
                                 $idRol = 0;
                                 $idUsuario = 0;
-                                if (isset($_SESSION[\'idRol\'])) {
-                                    $idRol = $_SESSION[\'idRol\'];
-                                    $idUsuario = $_SESSION[\'idUsuario\'];
+                                if (isset($_SESSION['idRol'])) {
+                                    $idRol = $_SESSION['idRol'];
+                                    $idUsuario = $_SESSION['idUsuario'];
                                 }
                             
                                 $cad = new CAD();
                                 $imagenU = "";
                                 $query = $cad->traeImagenUsuario($idUsuario);
-                                if ($query !== null && isset($query[\'imagenUsuario\'])) {
-                                    $imagenU = $query[\'imagenUsuario\'];
+                                if ($query !== null && isset($query['imagenUsuario'])) {
+                                    $imagenU = $query['imagenUsuario'];
                                     $imagenU = substr($imagenU, 3);
                                 } 
                             ?>
@@ -79,7 +25,7 @@
                                 <link href="../../estilo.css" rel="stylesheet" type="text/css">
                                 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
                                 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-                                <title>'.$nombre.'</title>
+                                <title>Prueba</title>
                                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                             </head>
                             <body>
@@ -90,8 +36,8 @@
                                     <?php
             if($idRol == 1)
             {
-                echo \'<div class="login">
-                    <img src="../../\'.$imagenU.\'" class="user-pic" onclick="toggleMenu()">
+                echo '<div class="login">
+                    <img src="../../'.$imagenU.'" class="user-pic" onclick="toggleMenu()">
                 </div>
 
                 <div class="sub-menu-wrap" id="subMenu">
@@ -114,12 +60,12 @@
                         </a>
 
                     </div>
-                </div>\';
+                </div>';
             }
             else if($idRol == 2)
             {
-                echo \' <div class="login">
-                <img src="../../\'.$imagenU.\'" class="user-pic" onclick="toggleMenu()">
+                echo ' <div class="login">
+                <img src="../../'.$imagenU.'" class="user-pic" onclick="toggleMenu()">
             </div>
 
             <div class="sub-menu-wrap" id="subMenu">
@@ -147,38 +93,51 @@
                     </a>
 
                 </div>
-            </div>\';
+            </div>';
             }
             else
             {
-                echo \'<div class = "login">
+                echo '<div class = "login">
                 <div class = "inicioSesion"><a href="php/login.php">Iniciar sesión</a></div>
                 <div class = "registro"><a href="php/registro.php">Registrar</a></div>
-                </div>\';
+                </div>';
             }
         ?>
                                 </div>
-                                <div class = "titleRecipe"><a href="../../index.php">Inicio <span>></span></a>'.$nombre.'</div>
-                                <div class = "introductionRecipe">'.$introduccion.'
+                                <div class = "titleRecipe"><a href="../../index.php">Inicio <span>></span></a>Prueba</div>
+                                <div class = "introductionRecipe">sfd
                                 </div>
                                 <div class="imgContenedor">
-                                    <div class="imageRecipe" style="--i:url(img/'.$imagen.')"></div>
+                                    <div class="imageRecipe" style="--i:url(img/b.jpg)"></div>
                                     <div class="commentRecipe">
-                                        <div class = "foodPortions"><i class="fa-regular fa-user"></i> Rinde '.$porciones.'</div>
+                                        <div class = "foodPortions"><i class="fa-regular fa-user"></i> Rinde 2</div>
                                         <div class = "foodPortions"><i class="fa-regular fa-save"></i> Guardar receta</div>
                                     </div>
                                 </div>
                                 <div class="ingredientsTitle">Ingredientes</div>
                                 <div class="ingredientsList">
                                     <ul>
-                                        '.$ingredientes.'                   
+                                                           
                                     </ul>
                                 </div>
                                 <div class="procedureTitle">Procedimiento</div>
                                 <div class="procedureList">
                                     <ul>
-                                        '.$procedimiento.'
+                                        
                                     </ul>
+                                </div>
+                                <div class="rating">Califica esta receta:</div>
+                                <div class="ratingContainer">
+                                    <input type="radio" name="rating" id="star1">
+                                    <label for="star1"><i class="fa-solid fa-star"></i></label>
+                                    <input type="radio" name="rating" id="star2">
+                                    <label for="star2"><i class="fa-solid fa-star"></i></label>
+                                    <input type="radio" name="rating" id="star3">
+                                    <label for="star3"><i class="fa-solid fa-star"></i></label>
+                                    <input type="radio" name="rating" id="star4">
+                                    <label for="star4"><i class="fa-solid fa-star"></i></label>
+                                    <input type="radio" name="rating" id="star5">
+                                    <label for="star5"><i class="fa-solid fa-star"></i></label>
                                 </div>
                                 <div class="comments">Comentarios:</div>
                                     <ul id="commentsList" class="commentsContainer2">
@@ -220,161 +179,4 @@
                             </script>
                             </body>
                             <script type="text/javascript" src="script.js"></script>
-                        </html>';
-                        if(fwrite($archivo, $texto))
-                            $flag = 1;
-                        else 
-                            $flag = 0;
-                        
-                        fclose($archivo);
-                }
-        }
-        else {
-            $flag = 2;
-        }
-    }
-}
-
-    unset($_POST['nombre']);
-    unset($_POST['categoria']);
-    unset($_POST['introduccion']);
-    unset($_POST['porciones']);
-    unset($_FILES['imagen']);
-    unset($_POST['ingredientes']);
-    unset($_POST['procedimiento']);
-?>
-
-
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link href="../estilo.css" rel="stylesheet" type="text/css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-        <title>Añadir</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-        <link rel="icon" type="image/png" href="../img/icono.png">
-    </head>
-    <body>
-        <nav>
-            <div class = "encabezado">
-                <div class = "logo">
-                     <img src="../img/logo.png" style="height: 70px;">
-                </div>
-                <?php
-                if($idRol == 2)
-                {
-                    echo ' <div class="login">
-                    <img src="'.$imagenU.'" class="user-pic" onclick="toggleMenu()">
-                </div>
-
-                <div class="sub-menu-wrap" id="subMenu">
-                    <div class="sub-menu">
-
-                        <a href=".php" class="sub-menu-link">
-                            <img src="../img/profile.png">
-                            <p>Perfil</p>
-                            <span>></span>
-                        </a>
-                        <a href="../iniciarSesion/editarPerfil.php" class="sub-menu-link">
-                            <img src="../img/setting.png">
-                            <p>Editar perdil</p>
-                            <span>></span>
-                        </a>
-                        <a href="menuConfig.php" class="sub-menu-link">
-                                <img src="../img/setting.png">
-                                <p>Configuración de Página</p>
-                                <span>></span>
-                            </a>
-                        <a href="../php/cerrarsesion.php" class="sub-menu-link">
-                            <img src="../img/logout.png">
-                            <p>Cerrar sesión</p>
-                            <span>></span>
-                        </a>
-
-                    </div>
-                </div>';
-                }
-                ?>
-
-             </div>
-        </nav>
-        
-        <div class="mainPageAdmin">
-            <div class = "titlePageAd"><a href="menuConfig.php">Configuración <span>></span></a>Añadir receta <span> ></span></div>
-            <?php
-            if($flag == 1)
-                echo '<div class="mensaje" style="margin-bottom: 20px; border-radius: 20px; background-color: #7ee67c; color: #0b9c06; text-align: center;">Añadido con éxito</div>';
-            else if($flag == 2)
-                echo '<div class="mensaje" style="margin-bottom: 20px; border-radius: 20px; background-color: pink; color: red; text-align: center;">Ocurrió un error</div>';
-            ?>
-            <div class=form>
-                <form action="crearReceta.php" method="POST" enctype="multipart/form-data">
-                    <!--h1 class="title">Crear receta</h1-->
-                    <p class="especificaDatos">Categoría:</p>
-                    <select name="categoria">
-                        <?php
-                            require_once "../php/conexion.php";
-                            $con = new Conexion();
-                            $getCat1 = $con->conectar()->prepare("SELECT * from categoria order by idCategoria");
-                            $getCat1->execute();
-                            $getCat2 = $getCat1->fetchAll(PDO::FETCH_ASSOC);
-
-                            foreach ($getCat2 as $row) {
-                                $id = $row['idCategoria'];
-                                $cat = $row['nombreCategoria'];
-                                ?>
-                                <option value="<?php echo $id; ?>"><?php echo $cat; ?></option>
-                                <?php
-                            }
-                        ?>
-                    </select>
-                    <p class="especificaDatos">Nombre de la receta:</p>
-                    <input placeholder="Nombre" type="text" name="nombre">
-                    <p class="especificaDatos">Introducción:</p>
-                    <textarea placeholder="¿Qué es la receta?" type="text" name="introduccion" rows="5" cols="50"></textarea>
-                    <p class="especificaDatos">Porciones:</p>
-                    <select name="porciones">
-                        <?php
-                        for ($i = 1; $i <= 10; $i++) {
-                            echo "<option value=\"$i\">$i</option>";
-                        }
-                        ?>
-                    </select>
-                    <p class="especificaDatos">Imagen:</p>
-                    <input type="file" name="imagen">
-                    <p class="especificaDatos">Ingredientes:</p>
-                    <textarea placeholder="Enlistar ingredientes" type="text" name="ingredientes" rows="10" cols="50"></textarea>
-                    <p class="especificaDatos">Procedimiento:</p>
-                    <textarea placeholder="Pasos a seguir" type="text" name="procedimiento" rows="15" cols="50"></textarea>
-                    <br><br>
-                    <input type="submit" value="Añadir nueva receta" class="boton">
-                </form>
-            </div>   
-        </div>
-        <div class="piePagina">
-            <div class="copyright">
-                Copyright © BEL'S RECIPES 2023
-            </div>
-            <div class="redesSociales">
-                <a class="btn btn-primary btn-social mx-2" href="https://twitter.com"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-primary btn-social mx-2" href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-primary btn-social mx-2" href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
-            </div>
-            <div class="pptu">
-                <a href="#">Política de seguridad</a>
-                <a href="#">Términos de uso</a>
-            </div>
-        </div>
-
-        <script>
-            let subMenu = document.getElementById("subMenu");
-
-            function toggleMenu(){
-                subMenu.classList.toggle("open-menu");
-            }
-        </script>
-    </body>
-</html>
+                        </html>

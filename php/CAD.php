@@ -22,6 +22,38 @@ class CAD
         }
     }
 
+    static public function guarda($idReceta, $idUsuario)
+    {
+
+        $con = new Conexion(); //Establecer conexion a la bd
+        $query = $con->conectar()->prepare("INSERT INTO guardado (idUsuario, idReceta) VALUES ('$idUsuario', '$idReceta')");
+        if($query->execute())
+        {
+            return 1;
+        }
+        else{
+            #echo "hubo un error";
+            #print_r($con->conectar()->errorInfo());
+            return 0;
+        }
+    }
+
+    static public function agregaComentario($idReceta, $idUsuario, $comentario)
+    {
+
+        $con = new Conexion(); //Establecer conexion a la bd
+        $query = $con->conectar()->prepare("INSERT INTO comentarios (idReceta, idUsuario, comentario) VALUES ('$idReceta', '$idUsuario', '$comentario')");
+        if($query->execute())
+        {
+            return 1;
+        }
+        else{
+            #echo "hubo un error";
+            #print_r($con->conectar()->errorInfo());
+            return 0;
+        }
+    }
+
     static public function verificaEmail($correo)
     {
         $con = new Conexion();
@@ -144,30 +176,6 @@ class CAD
     }
 
 
-
-
-
-    /*static public function traeUsuarioEs($id)
-    {
-        $con = new Conexion();
-        $query = $con->conectar()->prepare("SELECT * FROM usuario WHERE idUsuario = '$id'");
-        if($query->execute())
-        {
-            $datos = [];
-            /*Más de un registro 
-            while($row = $query->fetch(PDO::FETCH_ASSOC))
-            {
-                $datos[] = $row;
-            }
-            #print_r($datos);
-            return $datos;
-        }
-        else
-        {
-            return false;
-        }
-    }*/
-
     static public function traeUsuarioEs($id)
     {
         $con = new Conexion();
@@ -213,6 +221,21 @@ class CAD
             return 0;
         }
     }
+
+    static public function eliminaGuardado($idReceta)
+    {
+
+        $con = new Conexion(); //Establecer conexion a la bd
+        $query = $con->conectar()->prepare("DELETE from guardado WHERE idReceta = $idReceta");
+        if($query->execute())
+        {
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+
     static public function creaReceta($nombreReceta, $categoria, $intro, $porciones, $rutaImg, $ingredientes, $procedimiento)
     {
         $con = new Conexion();
@@ -351,6 +374,48 @@ class CAD
         }
     }
 
+    static public function traeRecetasBus($nombreReceta)
+    {
+        $con = new Conexion();
+        $query = $con->conectar()->prepare("SELECT * FROM recetas WHERE nombreReceta = '$nombreReceta' ORDER BY nombreReceta ASC");
+        if($query->execute())
+        {
+            $datos = [];
+            /*Más de un registro */
+            while($row = $query->fetch(PDO::FETCH_ASSOC))
+            {
+                $datos[] = $row;
+            }
+            #print_r($datos);
+            return $datos;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    static public function traeRecetasCategoria($idCategoria)
+    {
+        $con = new Conexion();
+        $query = $con->conectar()->prepare("SELECT * FROM recetas WHERE idCategoria = '$idCategoria' ORDER BY nombreReceta ASC");
+        if($query->execute())
+        {
+            $datos = [];
+            /*Más de un registro */
+            while($row = $query->fetch(PDO::FETCH_ASSOC))
+            {
+                $datos[] = $row;
+            }
+            #print_r($datos);
+            return $datos;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     static public function traeReceta($idReceta)
     {
         $con = new Conexion();
@@ -366,6 +431,62 @@ class CAD
         }
     }
 
+    static public function traeCategoria($idCategoria)
+    {
+        $con = new Conexion();
+        $query = $con->conectar()->prepare("SELECT * FROM categoria WHERE idCategoria = '$idCategoria'");
+        if($query->execute())
+        {
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            return $row;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    static public function traeGuardado($idUsuario)
+    {
+        $con = new Conexion();
+        $query = $con->conectar()->prepare("SELECT * FROM guardado WHERE idUsuario = '$idUsuario'");
+        if($query->execute())
+        {
+            $datos = [];
+            /*Más de un registro */
+            while($row = $query->fetch(PDO::FETCH_ASSOC))
+            {
+                $datos[] = $row;
+            }
+            #print_r($datos);
+            return $datos;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    static public function traeGuardadoR($idReceta)
+    {
+        $con = new Conexion();
+        $query = $con->conectar()->prepare("SELECT * FROM recetas WHERE idReceta = '$idReceta'");
+        if($query->execute())
+        {
+            $datos = [];
+            /*Más de un registro */
+            while($row = $query->fetch(PDO::FETCH_ASSOC))
+            {
+                $datos[] = $row;
+            }
+            #print_r($datos);
+            return $datos;
+        }
+        else
+        {
+            return false;
+        }
+    }
     /*static public function modificaReceta($n, $i, $por, $im, $ingr, $pro, $id)
     {
 
