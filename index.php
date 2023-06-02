@@ -114,7 +114,7 @@
         </div>
         
         <div class="menu">
-            <a href = "index.html">Inicio  <span>></span></a>
+            <a href = "index.php">Inicio  <span>></span></a>
             <a href = "categoria.php?idCategoria=1">Desayunos  <span>></span></a>
             <a href = "categoria.php?idCategoria=2">Platillos  <span>></span></a>
             <a href = "categoria.php?idCategoria=3">Postres  <span>></span></a>
@@ -122,35 +122,32 @@
             <a href = "categoria.php?idCategoria=5">Tips  <span>></span></a>
         </div>
         <form action="busqueda.php" method="POST">
-        <!--div class="containerSearch">
+        <div class="containerSearch">
             <input type="text" placeholder="Buscar" name = "busqueda">
-            <div class="btnSearch">
-                <i class="fa fa-search"></i>
-            </div>
-        </div-->
-            <input type="text" placeholder="Buscar" name = "busqueda">
-            <input type="submit" value="buscar">
+            <input type="submit" value="Buscar" style="background: rgb(246, 0, 127); color: white">
+        </div>
+            
         </form>
         <div class="cel">Ver también...</div>
         <div class="mainPage">
             <div class="sugerencias">Platillos con <span>></span></div>
             <div class="imgSug">
-                <a href="categorias/sugerencias/platillo-con-pollo.html">Pollo
+                <a href="receta.php?idReceta=33">Pollo
                     <img src="img/pollo.png" style="height: 120px;">
                 </a>
-                <a href="categorias/sugerencias/platillo-con-pasta.html">Pasta
+                <a href="receta.php?idReceta=32">Pasta
                     <img src="img/pasta.png" style="height: 120px;">
                 </a>
-                <a href="categorias/sugerencias/platillo-con-atun.html">Atún
+                <a href="receta.php?idReceta=29">Atún
                     <img src="img/atun.png" style="height: 120px;">
                 </a>
-                <a href="categorias/sugerencias/platillo-con-queso.html">Queso
+                <a href="receta.php?idReceta=34">Queso
                     <img src="img/quesadillas.png" style="height: 120px;">
                 </a>
-                <a href="categorias/sugerencias/platillo-con-carne.html">Carne
+                <a href="receta.php?idReceta=30">Carne
                     <img src="img/albondigas.png" style="height: 120px;">
                 </a>
-                <a href="categorias/sugerencias/platillo-con-pan.html">Pan
+                <a href="receta.php?idReceta=31">Pan
                     <img src="img/hamburguesa.png" style="height: 120px;">
                 </a>
                 

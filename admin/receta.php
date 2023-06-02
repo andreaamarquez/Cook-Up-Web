@@ -62,7 +62,7 @@
         <body>
             <div class = "encabezado">
                 <div class = "logo">
-                 <img src="img/logo.png" style="height: 70px;">
+                 <img src="img/logo.png" style="height: 70px;"  onclick="window.location.href=\'../index.php\';">
                 </div>';
             
                 if($idRol == 1)

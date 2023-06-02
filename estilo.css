@@ -1,49 +1,60 @@
 
-.mainPageAdmin{
-    /*display: flex;
-    justify-content: center;
-    align-items: center;*/
-    background-image: linear-gradient(to bottom, white 25%, white 30%, rgb(252, 192, 223) 70%);
-}
-.form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.form1{
-    margin-left: 35px !important;
-}
-
-.titlePageAd{
-    /*Tamaño*/
-    /*margin-top: 30px;*/
-    padding-top: 100px;
-    margin-left: 30px;
-    margin-bottom: 20px;
-    /*Posición*/
-    /*Apariencia*/
-    font-weight: bold;
-    font-size: 25pt;
-}
-
-form{
-    font-size:larger;
-    font-weight: bold;
-}
-
-.boton{
-    color: #fff;
-    border: none;
-    background:  rgb(246, 0, 127);
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 15px;
-    border-radius: 20px;
-}
 @media screen and (min-width:1025px){
     *{
         font-family: 'Poppins', sans-serif;
+    }
+
+    .cajaComentarios{
+        margin-left: 80px;
+        width: 80%;
+        display: flex;
+    }
+    
+    .boton{
+        margin-left: 25%;
+        margin-top: 20px;
+    }
+    .mainPageAdmin{
+        /*display: flex;
+        justify-content: center;
+        align-items: center;*/
+        background-image: linear-gradient(to bottom, white 25%, white 30%, rgb(252, 192, 223) 70%);
+    }
+    .form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .form1{
+        margin-left: 35px !important;
+    }
+    
+    .titlePageAd{
+        /*Tamaño*/
+        /*margin-top: 30px;*/
+        padding-top: 100px;
+        margin-left: 30px;
+        margin-bottom: 20px;
+        /*Posición*/
+        /*Apariencia*/
+        font-weight: bold;
+        font-size: 25pt;
+    }
+    
+    form{
+        font-size:larger;
+        font-weight: bold;
+    }
+    
+    .boton{
+        color: #fff;
+        border: none;
+        background:  rgb(246, 0, 127);
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 15px;
+        border-radius: 20px;
     }
     body{
         margin: 0px; 
@@ -71,7 +82,7 @@ form{
     }
 
 
-.sub-menu-wrap{
+    .sub-menu-wrap{
 
         position: fixed;
         top: 6%;
@@ -159,8 +170,6 @@ form{
         transform: translateX(5px);
     }
 
-   
-
     .user-pic{
         width: 60px;
         border-radius: 50%;
@@ -171,6 +180,59 @@ form{
 @media screen and (min-width:1025px){
     *{
         font-family: 'Poppins', sans-serif;
+    }
+     .menu2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        background-image: linear-gradient(to bottom, white 25%, white 30%, rgb(252, 192, 223) 70%);
+    }
+
+    .menu2 .row1 {
+        display: flex;
+        justify-content: center;
+        
+    }
+
+    .menu2 .row2 {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 5%;
+    }
+
+    .menu2 button {
+        width: 300px;
+        height: 300px;
+        margin: 5px;
+        border:solid 1px rgb(246, 0, 127);
+        box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        
+    }
+
+    .menu2 button img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 10px;
+    }
+
+    .menu2 button span {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .menu2 button p {
+        font-size: 16px;
+        margin-top: 5px;
+        color: #000;
     }
     body{
         margin: 0px; 
@@ -227,29 +289,9 @@ form{
     }
     
     ::placeholder {
-        color: grey;
+        color:rgb(246, 0, 127);
     }
     
-    .btnSearch{
-        position: absolute;
-        right: 0px;
-        top: 0px;
-        width: 53px;
-        height: 53px;
-        background: rgb(246, 0, 127);
-        line-height: 80px;
-        border-radius: 50%;
-        text-align: center;
-        cursor: pointer;
-        transition: .5s;
-    }
-    
-    .btnSearch i {
-        font-size: 25px;
-        color: white;
-        line-height: 50px;
-        transition: all .7s ease;
-    }
     
     .containerSearch:hover input {
         width: 350px;
@@ -932,6 +974,94 @@ form{
     *{
         font-family: 'Poppins', sans-serif;
     }
+    .menu2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        background-image: linear-gradient(to bottom, white 25%, white 30%, rgb(252, 192, 223) 70%);
+    }
+
+    .menu2 .row1 {
+        display: flex;
+        justify-content: center;
+        
+    }
+
+    .menu2 .row2 {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 5%;
+    }
+
+    .menu2 button {
+        width: 300px;
+        height: 300px;
+        margin: 5px;
+        border:solid 1px rgb(246, 0, 127);
+        box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        
+    }
+
+    .menu2 button img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 10px;
+    }
+
+    .menu2 button span {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .menu2 button p {
+        font-size: 16px;
+        margin-top: 5px;
+        color: #000;
+    }
+    .mainPageAdmin{
+        /*display: flex;
+        justify-content: center;
+        align-items: center;*/
+        height: 100%;
+        background-image: linear-gradient(to bottom, white 25%, white 30%, rgb(252, 192, 223) 70%);
+    }
+    .form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .form1{
+        margin-left: 35px !important;
+    }
+    
+    .titlePageAd{
+        /*Tamaño*/
+        /*margin-top: 30px;*/
+        padding-top: 100px;
+        margin-left: 30px;
+        margin-bottom: 20px;
+        /*Posición*/
+        /*Apariencia*/
+        font-weight: bold;
+        font-size: 25pt;
+    }
+    
+    form{
+        font-size:larger;
+        font-weight: bold;
+    }
+    
+
     body{
         margin: 0px; 
         padding: 0px;
@@ -1167,7 +1297,7 @@ form{
     .introductionPage{
         /*Tamaño*/
         margin-left: 30px;
-        width: 90%;
+        width: 60%;
         text-align: justify;
     }
     
@@ -1185,7 +1315,7 @@ form{
     
     .textoIntro{
         margin-left: 30px;
-        width: 1025px;
+        width: 700px;
         text-align: justify;
     }
     
@@ -1238,12 +1368,19 @@ form{
         /*Posición*/
         padding-top: 20px;
         margin-left: 40px;
+        width: 80%;
     }
     
     .foodPortions{
         /*Posición*/
-        margin-left: 35px;
-        line-height: 8;
+        margin-left: 5px;
+        font-size: 6pt;
+        line-height: 5;
+    }
+
+    .foodPortions a{
+        /*Posición*/
+        font-size: 6pt;
     }
     
     .imgContenedor{
@@ -1256,7 +1393,7 @@ form{
     
     .imageRecipe{
         height: 300px;
-        width: 800px;
+        width: 400px;
         margin-left: 45px;
         background: var(--i);
         background-position: center;
@@ -1455,13 +1592,241 @@ form{
         color:  rgb(246, 0, 127);
         transform: scale(1.3);
     }
+
+    .sub-menu-wrap{
+
+        position: fixed;
+        top: 6%;
+        right: 2%;
+        width: 320px;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 0.5s;
+
+    }
+
+    .sub-menu-wrap.open-menu{
+        max-height: 400px;
+    }
+
+    .sub-menu{
+        background: rgb(246, 0, 127);
+        padding: 25px;
+        margin: 10px;
+        border-radius: 0 0 5% 5%;
+    }
+
+    .user-info{
+        display: flex;
+        align-items: center;
+    }
+
+    .user-info h3{
+        font-weight: 500;
+    }
+
+    .user-info h2{
+        color: #ffff;
+    }
+
+    .user-info img{
+        width: 60px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+    .sub-menu hr{
+        border: 0;
+        height: 1px;
+        width: 100%;
+        background: #ccc;
+        margin: 15px 0 10px;
+        
+    }
+
+    .sub-menu-link{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #525252;
+        margin: 12px 0;
+    }
+
+    .sub-menu-link p{
+        width: 100%;
+        font-weight: 400;
+        color: #fff;
+    }
+
+    .sub-menu-link:hover p{
+        font-weight: 600;
+    }
+
+    .sub-menu-link img{
+        width: 40px;
+        filter: invert(100%) sepia(3%) saturate(100%) hue-rotate(37deg) brightness(200%) contrast(98%);
+        border-radius: 50%;
+        padding: 8px;
+        margin-right: 15px;
+    }
+
+    .sub-menu-link span{
+        font-size: 22px;
+        color: #ffff;
+        transition: transform 0.5s;
+
+    }
+
+    .sub-menu-link:hover span{
+        transform: translateX(5px);
+    }
+
+    .user-pic{
+        width: 60px;
+        border-radius: 50%;
+        cursor: pointer;
+        margin-right: 30px;
+    }
     
+    .container3 {
+        cursor: pointer;
+        width: 90%;
+        height: 90px; /* Cambia este valor según la altura deseada */
+        box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        margin: 0 5% 1% 5%;
+        border: solid 1px rgb(194, 9, 105);
+        border-radius: 10px;
+      } 
+
+      .image3 {
+        width: 90px;
+        height: 90px;
+        margin-right: 20px;
+      }
+      
+      .content3 {
+        flex: 1;
+      }
+
+      .content3 p {
+        margin: 0;
+        max-width: 50%;
+      }
+
+      .cajaComentarios{
+        margin-left: 50px;
+        width: 80%;
+        display: flex;
+    }
+    
+    .boton{
+        margin-left: 50%;
+        margin-top: 20px;
+    }
+    .boton{
+        color: #fff;
+        border: none;
+        background:  rgb(246, 0, 127);
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 10px;
+        border-radius: 20px;
+    }
 }
 
 @media screen and (min-width:0px) and (max-width:680px){
     *{
         font-family: 'Poppins', sans-serif;
     }
+    .menu2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        background-image: linear-gradient(to bottom, white 25%, white 30%, rgb(252, 192, 223) 70%);
+    }
+
+    .menu2 .row1 {
+        display: flex;
+        justify-content: center;
+        
+    }
+
+    .menu2 .row2 {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 5%;
+    }
+
+    .menu2 button {
+        width: 200px;
+        height: 200px;
+        margin: 5px;
+        border:solid 1px rgb(246, 0, 127);
+        box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        
+    }
+
+    .menu2 button img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .menu2 button span {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .menu2 button p {
+        font-size: 16px;
+        margin-top: 5px;
+        color: #000;
+    }
+    .mainPageAdmin{
+        /*display: flex;
+        justify-content: center;
+        align-items: center;*/
+        height: 100%;
+        background-image: linear-gradient(to bottom, white 25%, white 30%, rgb(252, 192, 223) 70%);
+    }
+    .form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .form1{
+        margin-left: 35px !important;
+    }
+    
+    .titlePageAd{
+        /*Tamaño*/
+        /*margin-top: 30px;*/
+        padding-top: 100px;
+        margin-left: 30px;
+        margin-bottom: 20px;
+        /*Posición*/
+        /*Apariencia*/
+        font-weight: bold;
+        font-size: 25pt;
+    }
+    
+    form{
+        font-size:larger;
+        font-weight: bold;
+    }
+    
     body{
         margin: 0px; 
         padding: 0px;
@@ -1776,8 +2141,14 @@ form{
     
     .foodPortions{
         /*Posición*/
-        margin-left: 35px;
+        margin-left: 15px;
         line-height: 8;
+        font-size: 6pt;
+    }
+
+    .foodPortions a{
+        /*Posición*/
+        font-size: 6pt;
     }
     
     .imgContenedor{
@@ -1790,7 +2161,7 @@ form{
     
     .imageRecipe{
         height: 300px;
-        width: 800px;
+        width: 300px;
         margin-left: 45px;
         background: var(--i);
         background-position: center;
@@ -1988,6 +2359,147 @@ form{
     input:hover ~ label{
         color:  rgb(246, 0, 127);
         transform: scale(1.3);
+    }
+
+    .sub-menu-wrap{
+
+        position: fixed;
+        top: 6%;
+        right: 2%;
+        width: 220px;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 0.5s;
+
+    }
+
+    .sub-menu-wrap.open-menu{
+        max-height: 400px;
+    }
+
+    .sub-menu{
+        background: rgb(246, 0, 127);
+        padding: 25px;
+        margin: 10px;
+        border-radius: 0 0 5% 5%;
+    }
+
+    .user-info{
+        display: flex;
+        align-items: center;
+    }
+
+    .user-info h3{
+        font-weight: 200;
+    }
+
+    .user-info h2{
+        color: #ffff;
+    }
+
+    .user-info img{
+        width: 30px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+    .sub-menu hr{
+        border: 0;
+        height: 1px;
+        width: 100%;
+        background: #ccc;
+        margin: 15px 0 10px;
+        
+    }
+
+    .sub-menu-link{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #525252;
+        margin: 12px 0;
+    }
+
+    .sub-menu-link p{
+        width: 100%;
+        font-weight: 400;
+        color: #fff;
+    }
+
+    .sub-menu-link:hover p{
+        font-weight: 300;
+    }
+
+    .sub-menu-link img{
+        width: 40px;
+        filter: invert(100%) sepia(3%) saturate(100%) hue-rotate(37deg) brightness(200%) contrast(98%);
+        border-radius: 50%;
+        padding: 8px;
+        margin-right: 15px;
+    }
+
+    .sub-menu-link span{
+        font-size: 18px;
+        color: #ffff;
+        transition: transform 0.5s;
+
+    }
+
+    .sub-menu-link:hover span{
+        transform: translateX(5px);
+    }
+
+    .user-pic{
+        width: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        margin-right: 30px;
+    }
+    .container3 {
+        cursor: pointer;
+        width: 90%;
+        height: 90px; /* Cambia este valor según la altura deseada */
+        box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        margin: 0 5% 1% 5%;
+        border: solid 1px rgb(194, 9, 105);
+        border-radius: 10px;
+      } 
+
+      .image3 {
+        width: 90px;
+        height: 90px;
+        margin-right: 20px;
+      }
+      
+      .content3 {
+        flex: 1;
+      }
+
+      .content3 p {
+        margin: 0;
+        max-width: 50%;
+      }
+
+      .cajaComentarios{
+        margin-left: 50px;
+        width: 80%;
+        display: flex;
+    }
+    
+    .boton{
+        margin-left: 70%;
+        margin-top: 20px;
+    }
+    .boton{
+        color: #fff;
+        border: none;
+        background:  rgb(246, 0, 127);
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 10px;
+        border-radius: 20px;
     }
 
 }

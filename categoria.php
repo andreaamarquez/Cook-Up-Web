@@ -40,7 +40,7 @@
     <body>
         <div class = "encabezado">
             <div class = "logo">
-             <img src="img/logo.png" style="height: 70px;">
+             <img src="img/logo.png" style="height: 70px;" onclick="window.location.href='index.php';">
             </div>
             <div class = "login">
             <?php
@@ -53,13 +53,13 @@
                 <div class="sub-menu-wrap" id="subMenu">
                     <div class="sub-menu">
 
-                        <a href="#" class="sub-menu-link">
-                            <img src="img/profile.png">
-                            <p>Perfil</p>
+                        <a href="guardados.php" class="sub-menu-link">
+                            <img src="img/corazon.png">
+                            <p>Elementos guardados</p>
                             <span>></span>
                         </a>
                         <a href="iniciarSesion/editarPerfil.php" class="sub-menu-link">
-                            <img src="img/setting.png">
+                            <img src="img/profile.png">
                             <p>Editar perfil</p>
                             <span>></span>
                         </a>
@@ -81,9 +81,9 @@
             <div class="sub-menu-wrap" id="subMenu">
                 <div class="sub-menu">
 
-                    <a href=".php" class="sub-menu-link">
-                        <img src="img/profile.png">
-                        <p>Perfil</p>
+                    <a href="guardados.php" class="sub-menu-link">
+                        <img src="img/corazon.png">
+                        <p>Elementos guardados</p>
                         <span>></span>
                     </a>
                     <a href="iniciarSesion/editarPerfil.php" class="sub-menu-link">
@@ -118,7 +118,7 @@
         <div class="encImg">
             <img src="<?php echo $imagen;?>" style="width: 100%;">
         </div>
-        <div class = "titlePage"><a href="index.php">Inicio <span>></span></a><?php echo $nombreCategoria;?> <span> ></span></div>
+        <div class = "titlePage"><a href="javascript:window.history.back()">Volver <span>></span></a><?php echo $nombreCategoria;?> <span> ></span></div>
         <div class = "introductionPage">
             <p><?php echo $descripcion;?></p>
         </div>

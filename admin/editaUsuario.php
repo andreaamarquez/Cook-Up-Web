@@ -68,7 +68,7 @@
                 <body>
                     <div class = "encabezado">
                         <div class = "logo">
-                        <img src="../img/logo.png" style="height: 70px;">
+                        <img src="../img/logo.png" style="height: 70px;" onclick="window.location.href=\'../index.php\';">
                         </div>';
                     
                     if($idRol == 2)
@@ -80,13 +80,13 @@
                     <div class="sub-menu-wrap" id="subMenu">
                         <div class="sub-menu">
 
-                            <a href=".php" class="sub-menu-link">
-                                <img src="../img/profile.png">
-                                <p>Perfil</p>
+                            <a href="../guardados.php" class="sub-menu-link">
+                                <img src="../img/corazon.png">
+                                <p>Elementos guardados</p>
                                 <span>></span>
                             </a>
                             <a href="../iniciarSesion/editarPerfil.php" class="sub-menu-link">
-                                <img src="../img/setting.png">
+                                <img src="../img/profile.png">
                                 <p>Editar perfil</p>
                                 <span>></span>
                             </a>
@@ -107,7 +107,7 @@
 
                     echo '</div>
                     <div class="mainPageAdmin">
-                        <div class = "titleRecipe"><a href="usuarios.php">Editar usuario<span>></span></a>'.$nombre.'</div>
+                        <div class = "titleRecipe"><a href="javascript:window.history.back()">Editar usuario<span>></span></a>'.$nombre.'</div>
                         <div class="form">
                         
                         <form method="POST" action="" enctype="multipart/form-data">

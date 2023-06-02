@@ -67,7 +67,7 @@
                 <body>
                     <div class = "encabezado">
                         <div class = "logo">
-                        <img src="../img/logo.png" style="height: 70px;">
+                        <img src="../img/logo.png" style="height: 70px;" onclick="window.location.href=\'../index.php\';">
                         </div>';
                         if($idRol == 1)
                         {
@@ -78,18 +78,18 @@
                             <div class="sub-menu-wrap" id="subMenu">
                                 <div class="sub-menu">
 
-                                    <a href="#" class="sub-menu-link">
-                                        <img src="img/profile.png">
-                                        <p>Perfil</p>
+                                    <a href="../guardados.php" class="sub-menu-link">
+                                        <img src="../img/corazon.png">
+                                        <p>Elementos guardados</p>
                                         <span>></span>
                                     </a>
                                     <a href="editarPerfil.php" class="sub-menu-link">
-                                        <img src="img/setting.png">
+                                        <img src="../img/setting.png">
                                         <p>Editar perfil</p>
                                         <span>></span>
                                     </a>
-                                    <a href="php/cerrarsesion.php" class="sub-menu-link">
-                                        <img src="img/logout.png">
+                                    <a href="../php/cerrarsesion.php" class="sub-menu-link">
+                                        <img src="../img/logout.png">
                                         <p>Cerrar sesión</p>
                                         <span>></span>
                                     </a>
@@ -106,9 +106,9 @@
                         <div class="sub-menu-wrap" id="subMenu">
                             <div class="sub-menu">
 
-                                <a href=".php" class="sub-menu-link">
-                                    <img src="../img/profile.png">
-                                    <p>Perfil</p>
+                                <a href="../guardados.php" class="sub-menu-link">
+                                    <img src="../img/corazon.png">
+                                    <p>Elementos guardados</p>
                                     <span>></span>
                                 </a>
                                 <a href="../admin/menuConfig.php" class="sub-menu-link">
@@ -127,7 +127,7 @@
                         }
                    echo '</div>
                     <div class="mainPageAdmin">
-                        <div class = "titleRecipe"><a href="../index.php">Editar perfil<span>></span></a>'.$nombre.'</div>
+                        <div class = "titleRecipe"><a href="javascript:window.history.back()">Editar perfil<span>></span></a>'.$nombre.'</div>
                         <div class="form">
                         
                         <form method="POST" action="editarPerfil.php" enctype="multipart/form-data">

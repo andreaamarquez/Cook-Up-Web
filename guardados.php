@@ -39,7 +39,7 @@
     <body>
         <div class = "encabezado">
            <div class = "logo">
-                <img src="img/logo.png" style="height: 70px;">
+                <img src="img/logo.png" style="height: 70px;" onclick="window.location.href='index.php';">
            </div>
             <?php
                     if($idRol == 2)
@@ -51,11 +51,11 @@
                     <div class="sub-menu-wrap" id="subMenu">
                         <div class="sub-menu">
                             <a href="iniciarSesion/editarPerfil.php" class="sub-menu-link">
-                                <img src="img/setting.png">
+                                <img src="img/profile.png">
                                 <p>Editar perfil</p>
                                 <span>></span>
                             </a>
-                            <a href="menuConfig.php" class="sub-menu-link">
+                            <a href="admin/menuConfig.php" class="sub-menu-link">
                                     <img src="img/setting.png">
                                     <p>Configuración de Página</p>
                                     <span>></span>
@@ -74,7 +74,7 @@
         </div>
         <div class="mainPageAdmin">
         
-        <div class = "titlePageAd"><a href="index.php">Inicio<span>></span></a>Elementos guardados<span> ></span></div>
+        <div class = "titlePageAd"><a href="javascript:window.history.back()">Volver<span>></span></a>Elementos guardados<span> ></span></div>
         <section class="todo">
         <?php
             $cad = new CAD();
@@ -134,6 +134,9 @@
 
             function toggleMenu(){
                 subMenu.classList.toggle("open-menu");
+            }
+            function goBack() {
+            window.history.go(-1);
             }
         </script>
     </body>

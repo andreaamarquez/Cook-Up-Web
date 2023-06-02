@@ -46,7 +46,7 @@
             <link href="estilo.css" rel="stylesheet" type="text/css">
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-            <title>'.$nombre.'></title>
+            <title>'.$nombre.'</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
         </head>
         <body>
@@ -64,7 +64,7 @@
                     <div class="sub-menu-wrap" id="subMenu">
                         <div class="sub-menu">
     
-                            <a href="#" class="sub-menu-link">
+                            <a href="guardados.php" class="sub-menu-link">
                                 <img src="img/corazon.png">
                                 <p>Elementos guardados</p>
                                 <span>></span>
@@ -125,15 +125,16 @@
                 }
                 echo 
             '</div>
-             <div class = "titleRecipe"><a href="index.php">Inicio <span>></span></a>'.$nombre.'</div>
+             <div class = "titleRecipe"><a href="javascript:window.history.back()">Volver <span>></span></a>'.$nombre.'</div>
              <div class = "introductionRecipe">'.$introduccion.'
             </div>
             <div class="imgContenedor">
                 <div class="imageRecipe" style="--i:url('.$imagen.')"></div>
                 <div class="commentRecipe">
-                    <div class = "foodPortions"><i class="fa-regular fa-user"></i> Rinde '.$porciones.'porciones</div>
-                    <div class = "foodPortions"><i class="fa-regular fa-save"></i><a href="php/guardar.php?idReceta='.$idReceta.'"> Guardar receta<a></div>
-                </div>
+                    <div class = "foodPortions"><i class="fa-regular fa-user"></i> Rinde '.$porciones.' porciones</div>';
+                    if($idRol == 1 || $idRol == 2)
+                        echo '<div class = "foodPortions"><i class="fa-regular fa-save"></i><a href="php/guardar.php?idReceta='.$idReceta.'"> Guardar receta<a></div>';
+                echo '</div>
             </div>
             <div class="ingredientsTitle">Ingredientes</div>
             <div class="ingredientsList">
@@ -147,8 +148,57 @@
                    '.$procedimiento.'
                 </ul>
             </div>
+            <div class="comments">Comentarios:</div>';
+            $cad = new CAD();
+
+            $datos = $cad->traeComentarios($idReceta);
+            if($datos)
+            {
+                foreach($datos as $registro)
+                {
+                    $idU = $registro['idUsuario'];
+                    $coment = $registro['comentario'];
+                    $fecha = $registro['fecha'];
+                    #$receta = $cad->traeGuardadoR($idR);
+                    $queryImg = $cad->traeImagenUsuario($idU);
+                    if ($queryImg !== null && isset($queryImg['imagenUsuario'])) {
+                        $img = $queryImg['imagenUsuario'];
+                        $img = substr($img, 3);
+                    }
+                    $nombreu = $cad->traeNombre($idU); 
+                    $nom = $nombreu['nombre'];
+                        echo '
+                                <div class="container3">
+                                    <img src="'.$img.'" alt="Imagen" class="image3">
+                                    <div class="content3">
+                                        <p>'.$fecha.'<p>
+                                        <p class="titulo-buscar">'.$nom.'</p>
+                                        <p>'.$coment.'</p>
+                                    </div>
+                                </div>';
                     
-            <div class="piePagina">
+                }
+            }
+            if($idRol == 1 || $idRol == 2)
+            {
+                echo '
+                    <div class="comments">Escribe un comentario:</div>
+                    <form action="php/comentar.php?idReceta='.$idReceta.'" method="POST">
+                    <div class=cajaComentarios>
+                    <div class="userImage">';
+                    if($idRol == 0)
+                        echo '<img src="img/user.jpg">';
+                    else
+                        echo '<img src="'.$imagenU.'">';
+              echo  '</div>
+                    <textarea placeholder="Escribe un comentario" type="text" name="comentario" rows="5" cols="50"></textarea><br>
+                    </div> 
+                    <input type="submit" value="Comentar" class="boton">
+                </form>';
+            }
+            
+                
+            echo '<div class="piePagina">
                 <div class="copyright">
                     Copyright © BEL\'\'S RECIPES 2023
                 </div>

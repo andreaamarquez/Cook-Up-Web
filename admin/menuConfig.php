@@ -32,38 +32,11 @@ if ($query !== null && isset($query['imagenUsuario'])) {
         <nav>
             <div class = "encabezado">
                 <div class = "logo">
-                     <img src="../img/logo.png" style="height: 70px;" href="../index.html">
+                     <img src="../img/logo.png" style="height: 70px;" href="../index.html"  onclick="window.location.href='../index.php';">
                 </div>
                 <?php
-                if($idRol == 1)
-                {
-                    echo '<div class="login">
-                        <img src="'.$imagenU.'" class="user-pic" onclick="toggleMenu()">
-                    </div>
-
-                    <div class="sub-menu-wrap" id="subMenu">
-                        <div class="sub-menu">
-
-                            <a href="#" class="sub-menu-link">
-                                <img src="img/profile.png">
-                                <p>Perfil</p>
-                                <span>></span>
-                            </a>
-                            <a href="editarPerfil.php" class="sub-menu-link">
-                                <img src="img/setting.png">
-                                <p>Editar perfil</p>
-                                <span>></span>
-                            </a>
-                            <a href="php/cerrarsesion.php" class="sub-menu-link">
-                                <img src="img/logout.png">
-                                <p>Cerrar sesión</p>
-                                <span>></span>
-                            </a>
-
-                        </div>
-                    </div>';
-                }
-                else if($idRol == 2)
+                
+                if($idRol == 2)
                 {
                     echo ' <div class="login">
                     <img src="'.$imagenU.'" class="user-pic" onclick="toggleMenu()">
@@ -72,9 +45,9 @@ if ($query !== null && isset($query['imagenUsuario'])) {
                 <div class="sub-menu-wrap" id="subMenu">
                     <div class="sub-menu">
 
-                        <a href=".php" class="sub-menu-link">
-                            <img src="../img/profile.png">
-                            <p>Perfil</p>
+                        <a href="../guardados.php" class="sub-menu-link">
+                            <img src="../img/corazon.png">
+                            <p>Elementos guardados</p>
                             <span>></span>
                         </a>
                         <a href="../iniciarSesion/editarPerfil.php" class="sub-menu-link">
@@ -95,10 +68,7 @@ if ($query !== null && isset($query['imagenUsuario'])) {
              </div>
         </nav>
         
-        <div class = "titlePageAd"><a href="../index.php">Inicio <span>></span></a>Configuración <span> ></span></div>
-
-        <!-- Aqui va el código -->
-
+        <div class = "titlePageAd"><a href="javascript:window.history.back()">Volver <span>></span></a>Configuración <span> ></span></div>
 
         <div class="menu2">
             <div class="row1">

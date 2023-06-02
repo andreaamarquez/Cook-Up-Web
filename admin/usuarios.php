@@ -38,7 +38,7 @@
     <body>
         <div class = "encabezado">
            <div class = "logo">
-                <img src="../img/logo.png" style="height: 70px;">
+                <img src="../img/logo.png" style="height: 70px;"  onclick="window.location.href='../index.php';">
            </div>
            <?php
                     if($idRol == 2)
@@ -50,13 +50,13 @@
                     <div class="sub-menu-wrap" id="subMenu">
                         <div class="sub-menu">
 
-                            <a href=".php" class="sub-menu-link">
-                                <img src="../img/profile.png">
-                                <p>Perfil</p>
+                            <a href="../guardados.php" class="sub-menu-link">
+                                <img src="../img/corazon.png">
+                                <p>Elementos guardados</p>
                                 <span>></span>
                             </a>
                             <a href="../iniciarSesion/editarPerfil.php" class="sub-menu-link">
-                                <img src="../img/setting.png">
+                                <img src="../img/profile.png">
                                 <p>Editar perfil</p>
                                 <span>></span>
                             </a>
@@ -78,7 +78,7 @@
 
         </div>
         <div class="mainPageAdmin">
-        <div class = "titlePageAd"><a href="menuConfig.php">Configuración<span>></span></a>Administrar usuarios<span> ></span></div>
+        <div class = "titlePageAd"><a href="javascript:window.history.back()">Configuración<span>></span></a>Administrar usuarios<span> ></span></div>
         <section class="todo">
         <?php
             $cad = new CAD();

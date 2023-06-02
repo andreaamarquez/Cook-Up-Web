@@ -74,7 +74,7 @@
                 <body>
                     <div class = "encabezado">
                         <div class = "logo">
-                        <img src="../img/logo.png" style="height: 70px;">
+                <img src="../img/logo.png" style="height: 70px;" onclick="window.location.href=\'../index.php\';">
                         </div>';
                         if($idRol == 2)
                     {
@@ -85,13 +85,13 @@
                     <div class="sub-menu-wrap" id="subMenu">
                         <div class="sub-menu">
 
-                            <a href=".php" class="sub-menu-link">
-                                <img src="../img/profile.png">
-                                <p>Perfil</p>
+                            <a href="../guardados.php" class="sub-menu-link">
+                                <img src="../img/corazon.png">
+                                <p>Elementos guardados</p>
                                 <span>></span>
                             </a>
                             <a href="../iniciarSesion/editarPerfil.php" class="sub-menu-link">
-                                <img src="../img/setting.png">
+                                <img src="../img/profile.png">
                                 <p>Editar perfil</p>
                                 <span>></span>
                             </a>
